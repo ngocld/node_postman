@@ -1,0 +1,32 @@
+{
+  "name": "node_postman",
+  "version": "1.0.0",
+  "description": "tool postman",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "deasync": "^0.1.23",
+    "dotenv": "^10.0.0",
+    "log4js": "^6.3.0",
+    "node-schedule": "^2.0.0",
+    "qs": "^6.10.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngocld/node_postman.git"
+  },
+  "keywords": [
+    "postman",
+    "api"
+  ],
+  "author": "ngocld",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngocld/node_postman/issues"
+  },
+  "homepage": "https://github.com/ngocld/node_postman#readme"
+}
