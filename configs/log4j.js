@@ -1,5 +1,4 @@
 var fs = require('fs');
-// var deasync = require('deasync');
 var log4js = require('log4js')
 
 log4js.configure({
@@ -23,7 +22,6 @@ log4js.configure({
 const logger = log4js.getLogger()
 logger.level = 'debugs'
 
-
 module.exports = {
-    logger
+    logger: logger
 }
