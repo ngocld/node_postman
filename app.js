@@ -9,6 +9,8 @@ var qs = require("qs")
 
 
 const submitAPI = (item) => {
+
+
     var data = null;
 
     if (item.type === "qs") {
@@ -42,7 +44,8 @@ const submitAPI = (item) => {
 
 // debgus
 myReq.forEach((item) => {
-    submitAPI(item)
+    if (item.active === true)
+        submitAPI(item)
 })
 
 // void main
