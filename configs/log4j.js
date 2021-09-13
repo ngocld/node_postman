@@ -5,10 +5,10 @@ log4js.configure({
     appenders: {
         everything: {
             type: 'dateFile',
-            filename: 'logs/all-logs.log',
-            maxLogSize: 10485760,
+            filename: 'logs/all.log',
+            maxLogSize: 31457280,
             backups: 30,
-            compress: true
+            compress: false
         }
     },
     categories: {

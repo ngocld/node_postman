@@ -40,15 +40,15 @@ const submitAPI = (item) => {
         });
 }
 
-// // debgus
-// myReq.forEach((item) => {
-//     if (item.active === true)
-//         submitAPI(item)
-// })
+// debgus
+myReq.forEach((item) => {
+    if (item.active === true)
+        submitAPI(item)
+})
 
 // void main
-schedule.scheduleJob(scheduleTime, function () {
-    requests.forEach((item) => {
-        submitAPI(item)
-    })
-})
+// schedule.scheduleJob(scheduleTime, function () {
+//     requests.forEach((item) => {
+//         submitAPI(item)
+//     })
+// })
