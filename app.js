@@ -10,7 +10,7 @@ var qs = require("qs")
 
 const submitAPI = (item) => {
     var data = null;
-    
+
     if (item.type === "qs") {
         data = qs.stringify(item.body);
     } else if (item.type === "js") {
@@ -41,13 +41,18 @@ const submitAPI = (item) => {
         });
 }
 
+if (myReq.length === 0){
+    const notify = "There is no file shot. Stop application."
+    console.log(notify);
+    logger.error(notify);
+    return
+}
+
 // debgus
 myReq.forEach((item) => {
     if (item.active === true)
         submitAPI(item)
 })
-
-
 
 // void main
 // schedule.scheduleJob(scheduleTime, function () {
