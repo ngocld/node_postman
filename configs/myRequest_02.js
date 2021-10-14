@@ -1,5 +1,6 @@
 const myReq = [
   {
+    id: '49911b5e0b07918c3716513e2ca58a3b',
     active: true,
     url: "https://svgw.hanwhalife.com.vn/orchard.api/token",
     method: "post",
@@ -7,7 +8,7 @@ const myReq = [
       "Content-Type": "application/x-www-form-urlencoded",
       "mCpo-Client-Scope": "prod",
       "mCpo-Client-Type": "Phone.android.11",
-      "mCpo-Client-Version": "1.6.0",
+      "mCpo-Client-Version": "1.5.9",
     },
     type: "qs",
     body: {
@@ -18,6 +19,7 @@ const myReq = [
   },
 
   {
+    id: '04bd8399364fba8e7a97b83c09f567d9',
     active: true,
     url: "https://svgw.hanwhalife.com.vn/orchard.api2/cmscpo/list/welcome",
     method: "post",
@@ -32,6 +34,7 @@ const myReq = [
   },
 
   {
+    id: '3cd7f5823cf5fcfcea62666104691ddc',
     active: true,
     url: "https://svgw.hanwhalife.com.vn/mcpo/api/mauth/token",
     method: "post",
@@ -39,26 +42,12 @@ const myReq = [
       "Content-Type": "application/json; charset=utf-8",
       "mCpo-Client-Scope": "prod",
       "mCpo-Client-Type": "Phone.android.10",
-      "mCpo-Client-Version": "1.6.0",
+      "mCpo-Client-Version": "1.5.8",
     },
     type: "js",
     body: {
-      username: "admin1",
+      username: "admin",
       passWord: "H@nwha123",
-    },
-  },
-
-  {
-    active: true,
-    url: "https://svgw.hanwhalife.com.vn/epush/api/account/login",
-    method: "post",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    type: "js",
-    body: {
-      username: "fis.tdc.hcm",
-      password: "123123",
     },
   }
 ];

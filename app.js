@@ -10,7 +10,7 @@ var qs = require("qs")
 
 const submitAPI = (item) => {
     var data = null;
-
+    
     if (item.type === "qs") {
         data = qs.stringify(item.body);
     } else if (item.type === "js") {
@@ -28,7 +28,7 @@ const submitAPI = (item) => {
         data: data,
     };
 
-    logger.info(`Start request ${item.method.toUpperCase()} ${item.url}`);
+    logger.info(`Start Request ${item.method.toUpperCase()} ${item.url}...`);
 
     axios(config)
         .then(function (response) {
@@ -36,7 +36,8 @@ const submitAPI = (item) => {
             logger.info(response.status + ' ' + JSON.stringify(response.data))
         })
         .catch(function (error) {
-            logger.error(response.status + ' ' + error);
+            logger.info(`${item.method.toUpperCase()} ${item.url}`)
+            logger.info(JSON.stringify(error.message));
         });
 }
 
@@ -45,6 +46,8 @@ myReq.forEach((item) => {
     if (item.active === true)
         submitAPI(item)
 })
+
+
 
 // void main
 // schedule.scheduleJob(scheduleTime, function () {
