@@ -1,8 +1,8 @@
 const {
     logger,
-    myReq,
-    scheduleTime
+    myReq
 } = require("./config")
+
 const schedule = require("node-schedule")
 var axios = require("axios")
 var qs = require("qs")
@@ -41,22 +41,42 @@ const submitAPI = (item) => {
         });
 }
 
-if (myReq.length === 0){
+
+//Verif data
+if (myReq.length === 0) {
     const notify = "There is no file shot. Stop application."
-    console.log(notify);
-    logger.error(notify);
+    console.log(notify)
+    logger.error(notify)
     return
+} else {
+    myReq.forEach((item) => {
+        if (item.job.schedule === null) {
+            const notify = `${item.job.name} is not exits.`
+            console.log(notify)
+            logger.error(notify)
+            return
+        }
+    })
 }
 
-// debgus
-myReq.forEach((item) => {
-    if (item.active === true)
-        submitAPI(item)
-})
+// Run program
+myReq.forEach(item => {
 
-// void main
-// schedule.scheduleJob(scheduleTime, function () {
-//     requests.forEach((item) => {
-//         submitAPI(item)
-//     })
-// })
+    // Debugs
+    // item.source.forEach((item1) => {
+    //     if (item1.active === true)
+    //         submitAPI(item1)
+    // })
+
+    // Schedule
+    const notify = `${item.job.name} is starting on schedule ${item.job.schedule}`
+    console.log(notify)
+    logger.info(notify)
+
+    schedule.scheduleJob(item.job.schedule, function () {
+        item.source.forEach(item1 => {
+            if (item1.active === true)
+                submitAPI(item1)
+        })
+    })
+})

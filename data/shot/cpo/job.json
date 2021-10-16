@@ -1,0 +1,4 @@
+{
+    "schedule": "*/2 * * * *",
+    "name": "job cpo"
+}
