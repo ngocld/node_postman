@@ -1,13 +1,10 @@
 const fs = require('fs');
-const {
-    logger
-} = require('./configs/log4j')
+const { logger } = require('./configs/log4j')
 
 
 let myReqJson = []
 const dirShot = './data/shot';
 if (fs.existsSync(dirShot)) {
-
     fs.readdirSync(dirShot).forEach(folderName => {
         const dirShotChild = `${dirShot}/${folderName}`
 
