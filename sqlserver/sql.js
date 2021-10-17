@@ -1,6 +1,6 @@
-const { logger, sqlConfig } = require("./../config")
-
 const sql = require('mssql')
+const { logger, sqlConfig } = require("./../config")
+var deasync = require('deasync');
 
 const logProc = (proc, param) => {
     let info = proc
@@ -23,7 +23,12 @@ const apiAdd = (param) => {
 
             .execute('sp_api_add', (err, result) => {
                 logProc('sp_api_add', param)
-                logger.info(JSON.stringify(result))
+                if (!err){
+                    logger.info(JSON.stringify(result))
+                }
+                else{
+                    logger.error(JSON.stringify(err))
+                }
             })
     })
 
@@ -32,6 +37,23 @@ const apiAdd = (param) => {
     })
 }
 
+
+const apiSearch = (param) => {
+    sql.connect(sqlConfig, err => {
+        new sql.Request()
+            .input('ServiceID', sql.Int, param.ServiceID)
+            .input('Error', sql.Bit, param.Error)
+            .input('MinAgo', sql.Int, param.MinAgo)
+            .execute('sp_api_search', (err, result) => {
+
+                logProc('sp_api_search', param)
+                console.log(result.recordset);
+                logger.info(`Row count: ${result.recordset.length}`)
+            })
+    })
+}
+
 module.exports = {
-    apiAdd: apiAdd
+    apiAdd: apiAdd,
+    apiSearch: apiSearch
 }
