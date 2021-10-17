@@ -19,15 +19,15 @@ myReq.forEach(item => {
     //     base.submitAPI(item1)
     // })
 
-    // // Schedule
-    // const notify = `${item.job.name} is starting on schedule ${item.job.schedule}`
-    // console.log(notify)
-    // logger.info(notify)
+    // Schedule
+    const notify = `${item.job.name} is starting on schedule ${item.job.schedule}`
+    console.log(notify)
+    logger.info(notify)
 
-    // schedule.scheduleJob(item.job.schedule, function () {
-    //     item.source.forEach(item1 => {
-    //         if (item1.active === true)
-    //             base.submitAPI(item1)
-    //     })
-    // })
+    schedule.scheduleJob(item.job.schedule, function () {
+        item.source.forEach(item1 => {
+            if (item1.active === true)
+                base.submitAPI(item1)
+        })
+    })
 })
