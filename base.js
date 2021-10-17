@@ -30,34 +30,43 @@ const submitAPI = (item) => {
         ResponseTime: 0,
         StatusCode: null,
         Error: false,
+        Response: null
     }
 
+    let time1 = new Date()
+    let time2 = new Date()
 
     logger.info(`Start Request ${item.method.toUpperCase()} ${item.url}...`);
     axios(config)
         .then(function (response) {
+            time2 = new Date()
+            paramSql.ResponseTime = time2 - time1
+
             logger.info(`${item.method.toUpperCase()} ${item.url}`)
             logger.info(response.status + ' ' + JSON.stringify(response.data))
 
             //write data sql server
             paramSql.StatusCode = response.status
             paramSql.Error = false
+            paramSql.Response = JSON.stringify(response.data)
             apiAdd(paramSql)
         })
         .catch(function (error) {
-            logger.info(`${item.method.toUpperCase()} ${item.url}`)
-            logger.info(JSON.stringify(error.message));
+            time2 = new Date()
+            paramSql.ResponseTime = time2 - time1
 
+            logger.info(`${item.method.toUpperCase()} ${item.url}`)
+            logger.info(error.response.status + ' ' + JSON.stringify(error.message))
+            
             //write data sql server
-            paramSql.StatusCode = 500
+            paramSql.StatusCode = error.response.status
             paramSql.Error = true
+            paramSql.Response = error.message
             apiAdd(paramSql)
         });
 }
 
 const verifyApp = (myReq) => {
-    
-
     if (myReq.length === 0) {
         console.log('111');
         const notify = "There is no file shot"
@@ -78,7 +87,6 @@ const verifyApp = (myReq) => {
 
         return true
     }
-    
 }
 
 module.exports = {
