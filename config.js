@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { logger } = require('./configs/log4j')
-
+const { sqlConfig } = require('./configs/sqlConfig')
+const { usersAuthen, hosting } = require('./configs/apiConfig')
 
 let myReqJson = []
 const dirShot = './data/shot';
@@ -35,5 +36,8 @@ if (fs.existsSync(dirShot)) {
 
 module.exports = {
     logger: logger,
-    myReq: myReqJson
+    myReq: myReqJson,
+    sqlConfig: sqlConfig,
+    usersAuthen: usersAuthen,
+    hosting: hosting
 }

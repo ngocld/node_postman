@@ -1,6 +1,7 @@
 var base = require('./base.js');
 const { logger, myReq } = require("./config")
 const schedule = require("node-schedule")
+const api = require("./api/api")
 
 if (base.verifyApp(myReq) === false) {
     const notify = "Verify config is invalid. Stop program..."

@@ -1,5 +1,5 @@
-const { logger } = require("./../config")
-const { sqlConfig } = require('./../configs/sqlConfig')
+const { logger, sqlConfig } = require("./../config")
+
 const sql = require('mssql')
 
 const logProc = (proc, param) => {

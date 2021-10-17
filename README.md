@@ -1,6 +1,8 @@
 # node_postman
 Tool consume API with nodejs
 
+#0.1.4
+- Add api to consume
 
 #0.1.3
 - Write report in sql server
